@@ -2,7 +2,7 @@
 
   $raw = '22.11.1968';
   $start = Datetime::createFromFormat('d.m.Y',$raw);
-  echo "data de inicio: ".$start->format('Y-m-d')."\n";
+  echo "data de inicio: ".$start->format('Y-m-d')."<br>";
 
   $end = clone $start;
   $end->add(new DateInterval('P1M6D'));

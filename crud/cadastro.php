@@ -40,13 +40,41 @@
                     $sucesso = "Dados cadastrados com sucesso!";
                 }
             }
-        }
+        } 
 
         if(isset($erro))
             echo '<div style="color:#F00">'.$erro.'</div><br/><br/>';
         else
         is(isset($sucesso))
             echo '<div style="color:#00f">'.$sucesso.'</div><br/><br/>';
+
+        <br>
+        <br>
+        <table width="400px" border="0" cellspacing="0">
+            <tr>
+                <td><strong>'#'</strong></td>
+                <td><strong>'Nome'</strong></td>
+                <td><strong>'Email'</strong></td>
+                <td><strong>'Cidade'</strong></td>
+                <td><strong>'UF'</strong></td>
+                <td><strong>'#'</strong></td>
+            </tr>
+
+            <?php
+                $result = $obj_mysqli->query("SELECT * FROM `cliente`");
+                while ($aux_query = $result->fetch_assoc()) 
+                {
+                    echo'<tr>';
+                    echo'  <td>'.$aux_query["Id"].'</td>';
+                    echo'  <td>'.$aux_query["Nome"].'</td>';
+                    echo'  <td>'.$aux_query["Email"].'</td>';
+                    echo'  <td>'.$aux_query["Cidade"].'</td>';
+                    echo'  <td>'.$aux_query["UF"].'</td>';
+                    echo'  <td><a href="'.$_SERVER["PHP_SELF"].'?id='.$aux_query["Id"].'">Editar</a></td>';
+                    echo'</tr>';
+                }
+            ?>
+        </table>
 
     ?>
 
