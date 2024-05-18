@@ -33,7 +33,8 @@ if(isset($_POST["nome"]) && isset($_POST["email"]) && isset($_POST["cidade"]) &&
 
          //Local para a realização do cadastro ou dados enviados
             
-         //local onde será realizado o cadastro e alteração do dados enviados    
+         //local onde será realizado o cadastro e alteração do dados enviados  
+            $id = $_POST["id"];  
             $nome = $_POST["nome"];
             $email = $_POST["email"];
             $cidade = $_POST["cidade"];
@@ -60,7 +61,7 @@ if(isset($_POST["nome"]) && isset($_POST["email"]) && isset($_POST["cidade"]) &&
             else
             if(is_numeric($id) && $id >= 1)
             {
-                $stmt = $obj_mysqli->prepare("UPDATE 'cliente' SET 'nome'=?, 'email'=?, 'cidade'=?, 'uf'=? WHERE id = ? ");
+                $stmt = $obj_mysqli->prepare("UPDATE `cliente` SET `nome`=?, `email`=?, `cidade`=?, `uf`=? WHERE id = ? ");
                 $stmt->bind_param('ssssi', $nome, $email, $cidade, $uf, $id);
 
                 if(!$stmt->execute())
@@ -145,20 +146,20 @@ if(isset($_GET["id"]) && is_numeric($_GET["id"]))
 
     <form action="<?=$_SERVER["PHP_SELF"]?>" method="POST"> <!--Para onde os dados vão ser enviados -->
         Nome: <br>
-        <input type="text" name="nome" placeholder="Qual seu nome?"><br><br>
+        <input type="text" name="nome" placeholder="Qual seu nome?" value="<?=$nome?>"><br><br>
         Email: <br>
-        <input type="email" name="email" placeholder="Qual seu e-mail?"><br><br>
+        <input type="email" name="email" placeholder="Qual seu e-mail?" value="<?=$email?>"><br><br>
         Cidade: <br>
-        <input type="text" name="cidade" placeholder="Qual a sua cidade?"><br><br>
+        <input type="text" name="cidade" placeholder="Qual a sua cidade?" value="<?=$cidade?>"><br><br>
         UF: <br>
-        <input type="text" name="uf" size="2" placeholder="UF"><br><br>
+        <input type="text" name="uf" size="2" placeholder="UF" value="<?=$uf?>"><br><br>
         <input type="hidden" value="<?=$id?>" name="id" >
         <button type="submit"><?=($id==-1)?"Cadastrar":"Salvar"?></button>
     </form>
 
 <br>
 <br>    
-<table width="400px" border="0" cellspacing="0">
+<table width="800px" border="2" cellspacing="2">
     <tr>
         <td><strong>#</strong></td>
         <td><strong>Nome</strong></td>
@@ -184,6 +185,6 @@ if(isset($_GET["id"]) && is_numeric($_GET["id"]))
         }
 ?>
 </table>
-    
+
 </body>
 </html>
