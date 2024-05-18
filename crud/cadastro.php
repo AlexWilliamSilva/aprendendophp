@@ -50,7 +50,11 @@ if(isset($_POST["nome"]) && isset($_POST["email"]) && isset($_POST["cidade"]) &&
                 {
                     $erro = $stmt->error;
                 }
-                else 
+                elseif(!$stmt->execute())
+                {
+                    $sucesso = "Dados cadastrados com sucesso!";
+                }
+                else
                 {
                     header("location:cadastro.php");
                     exit;
@@ -127,7 +131,7 @@ if(isset($_GET["id"]) && is_numeric($_GET["id"]))
   
 }
 ?>
-<!DOCTYPE html>
+<!DOCTYPE html> <!-- Começo do arquivo html  -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -137,7 +141,7 @@ if(isset($_GET["id"]) && is_numeric($_GET["id"]))
 <body>
 <?php   
 
-    if(isset($erro))
+    if(isset($erro)) // se não ouver tiver nenhum dado nos campos aparece uma mensagem que esta armazenada na variavel erro
             echo '<div style="color:#F00">'.$erro.'</div><br/><br/>';
     else 
         if(isset($sucesso))
@@ -157,9 +161,9 @@ if(isset($_GET["id"]) && is_numeric($_GET["id"]))
         <button type="submit"><?=($id==-1)?"Cadastrar":"Salvar"?></button>
     </form>
 
-<br>
+<br> <!-- Gera uma quebra de linha -->
 <br>    
-<table width="800px" border="2" cellspacing="2">
+<table width="800px" border="2" cellspacing="2"> <!-- Cria um retângulo(tabela) em volta das informações inseridas, afim de organizar --> 
     <tr>
         <td><strong>#</strong></td>
         <td><strong>Nome</strong></td>
@@ -170,7 +174,7 @@ if(isset($_GET["id"]) && is_numeric($_GET["id"]))
     </tr>
 
     <?php
-        $result = $obj_mysqli->query("SELECT * FROM `cliente`");
+        $result = $obj_mysqli->query("SELECT * FROM `cliente`"); // Busca as informações do Banco de dados através das variáveis 
         while ($aux_query = $result->fetch_assoc()) 
         {
             echo'<tr>';
@@ -187,4 +191,4 @@ if(isset($_GET["id"]) && is_numeric($_GET["id"]))
 </table>
 
 </body>
-</html>
+</html> <!-- Fim do arquivo html -->
