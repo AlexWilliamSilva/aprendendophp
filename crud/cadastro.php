@@ -50,10 +50,6 @@ if(isset($_POST["nome"]) && isset($_POST["email"]) && isset($_POST["cidade"]) &&
                 {
                     $erro = $stmt->error;
                 }
-                elseif(!$stmt->execute())
-                {
-                    $sucesso = "Dados cadastrados com sucesso!";
-                }
                 else
                 {
                     header("location:cadastro.php");
@@ -104,7 +100,7 @@ if(isset($_GET["id"]) && is_numeric($_GET["id"]))
     else
     {
 
-        //...montamos a consulta que será realizada....
+        //...montamos a consulta que será realizada.... 
         $stmt = $obj_mysqli->prepare("SELECT * FROM `cliente` WHERE id = ?");
 
         //passamos o id como parâmetro, do tipo i = int, inteiro...
@@ -165,12 +161,12 @@ if(isset($_GET["id"]) && is_numeric($_GET["id"]))
 <br>    
 <table width="800px" border="2" cellspacing="2"> <!-- Cria um retângulo(tabela) em volta das informações inseridas, afim de organizar --> 
     <tr>
-        <td><strong>#</strong></td>
-        <td><strong>Nome</strong></td>
-        <td><strong>Email</strong></td>
-        <td><strong>Cidade</strong></td>
-        <td><strong>UF</strong></td>
-        <td><strong>#</strong></td>
+        <th><strong>#</strong></th>
+        <th><strong>Nome</strong></th>
+        <th><strong>Email</strong></th>
+        <th><strong>Cidade</strong></th>
+        <th><strong>UF</strong></th>
+        <th><strong>#</strong></th>
     </tr>
 
     <?php
