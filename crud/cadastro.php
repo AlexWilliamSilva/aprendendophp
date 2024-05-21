@@ -4,7 +4,7 @@ $obj_mysqli = new mysqli("127.0.0.1", "root", "", "tutocrudphp");
 if ($obj_mysqli->connect_errno)
 { //ocorreu uma conexão do php com o banco de dados
     echo "Ocorreu um erro na conexão com o banco de dados.";
-    exit; //
+    exit; 
 }
 
 mysqli_set_charset($obj_mysqli, 'utf8'); //mysqli_set_charset é responsável por informar a conexão atual que é em forma de utf8
@@ -32,7 +32,6 @@ if(isset($_POST["nome"]) && isset($_POST["email"]) && isset($_POST["cidade"]) &&
         $erro = "Campo UF obrigatório";
     else
         if(empty($_POST["email"] === $_POST["email"]))
-        
     else
         {
         /*Alteramos aqui também.
@@ -152,7 +151,7 @@ if(isset($_GET["id"]) && is_numeric($_GET["id"]))
         if(isset($sucesso))
             echo '<div style="color:#00f">'.$sucesso.'</div><br/><br/>';
 ?>
-
+ 
     <form action="<?=$_SERVER["PHP_SELF"]?>" method="POST"> <!--Para onde os dados vão ser enviados -->
         Nome: <br>
         <input type="text" name="nome" placeholder="Qual seu nome?" value="<?=$nome?>"><br><br>
