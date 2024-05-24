@@ -21,7 +21,7 @@
 </head>
 <body>
     <?php
-        $user = $_POST["user"];
+        $user = $_POST["user"]; 
         $pass = $_POST["pass"];
 
         $consulta = mysqli_query($conexao, "select * from usuario where usuario = '$user' and senha = '$pass'") or die (mysqli_error($conexao));
