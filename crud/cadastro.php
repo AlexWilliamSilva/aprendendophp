@@ -31,8 +31,6 @@ if(isset($_POST["nome"]) && isset($_POST["email"]) && isset($_POST["cidade"]) &&
         if(empty($_POST["uf"]))
         $erro = "Campo UF obrigatório";
     else
-        if(empty($_POST["email"] === $_POST["email"]))
-    else
         {
         /*Alteramos aqui também.
         Agora, o $id, pode vir com o valor -1, que nos indica novo registro,
