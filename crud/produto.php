@@ -133,7 +133,12 @@ else
             <hr>
 
             <label for="unid">Digite o tipo de unidade do produto:</label><br>
-            <input type="text" name="unid" id="unid" placeholder="mg,ml,kg..." value="<?=$unid?>"><br><br>
+            <input type="radio" name="unid" id="unid" value="<?=$unid?>">
+            <label for="unid">kg</label>
+            <input type="radio" name="unid" id="unid2" value="<?=$unid?>">
+            <label for="unid">g</label>
+            <input type="radio" name="unid" id="unid3" value="<?=$unid?>">
+            <label for="unid">mg</label>
             <hr>
 
             <label for="marca">Digite a marca do produto:</label><br>
