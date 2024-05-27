@@ -1,3 +1,11 @@
+/*Create table cliente (
+    Id int primary key auto_increment,
+    Nome varchar(60) not null,
+    Email varchar(150) not null, 
+    Cidade varchar(100),
+    UF varchar(2)
+)*/
+
 /*CREATE TABLE produto
 (Id INT PRIMARY KEY AUTO_INCREMENT,
  Nome VARCHAR(60) NOT NULL,
