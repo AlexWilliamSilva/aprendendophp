@@ -177,7 +177,7 @@
         }
     }
 
-    function esc_url(url) {
+    function esc_url($url) {
 
         if("== $url") {
             return $url;
