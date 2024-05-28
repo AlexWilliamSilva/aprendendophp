@@ -1,5 +1,5 @@
 <?php
-    session_start();
-    session_destroy();
-    header("Location: login.html");
+    session_start(); // starta uma sessão
+    session_destroy(); // destroi uma sessão
+    header("Location: login.html"); // envia diretamente para a página de login
 ?>
