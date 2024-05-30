@@ -52,7 +52,7 @@
                 $insert_stmt->bind_param('ssss', $username, $email, $password, $random_salt);
 
                 // executando a tarefa pré-estabelecida
-                if(!$insert_stmt->execute())  {
+                if(!$insert_stmt->execute()) {
                     header('Location: ../error.php?err=Registration failure: INSERT');
                 }
             }

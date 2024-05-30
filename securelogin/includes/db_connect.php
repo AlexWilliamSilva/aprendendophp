@@ -1,4 +1,4 @@
 <?php
-    include_once 'psl-config.php'; // functions não está incluso
+    include_once 'psl-config.php'; 
 
-    $mysqli = new mysqli(HOST,USER,PASSWORD,DATABASE);
+    $mysqli = new mysqli(HOST, USER, PASSWORD, DATABASE);
