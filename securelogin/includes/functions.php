@@ -39,9 +39,9 @@
 
         // definições pré-estabelecidas impedem a injeção de um ataque SQL
 
-        if($stmt = $mysqli->prepare("SELECT id, username, password, salt FROM members WHERE email = ? LIMIT 1")) {
+        if ($stmt = $mysqli->prepare("SELECT id, username, password, salt FROM members WHERE email = ? LIMIT 1")) {
 
-            $stmt->bind_param('s',$email); // Relaciona email ao parâmetro
+            $stmt->bind_param('s', $email); // Relaciona email ao parâmetro
 
             $stmt->execute(); // executa uma tarefa pré-estabelecida
 
@@ -72,15 +72,15 @@
                         $user_browser = $_SERVER['HTTP_USER_AGENT'];
 
                         // proteção XSS conforme imprimido o valor abaixo
-                        $user_id = preg_replace("/[^0-9]+/","",$user_id);
-
+                        $user_id = preg_replace("/[^0-9]+/", "", $user_id);
                         $_SESSION['user_id'] = $user_id;
 
+
                         // proteção XSS conforme imprimido o valor abaixo
-                        $username = preg_replace("/[^a-zA-Z0-9_\-]+/","",$username);
+                        $username = preg_replace("/[^a-zA-Z0-9_\-]+/", "", $username);
 
                         $_SESSION['username'] = $username;
-                        $_SESSION['login_string'] = hash('sha512',$password . $user_browser);
+                        $_SESSION['login_string'] = hash('sha512', $password . $user_browser);
 
                         // login concluido
                         return true;
@@ -89,7 +89,7 @@
 
                         // esta tentativa é registrada no banco de dados
                         $now = time();
-                        if(!$mysqli->query("INSERT INTO login_attempts(user_id, time) VALUES ('$user_id','$now')")) {
+                        if (!$mysqli->query("INSERT INTO login_attempts(user_id, time) VALUES ('$user_id', '$now')")) {
 
                             header("Location: ../error.php?err=Database error: login_attempts");
                             exit();
@@ -152,12 +152,13 @@
             if($stmt = $mysqli->prepare("SELECT password FROM members WHERE id = ? LIMIT 1")) {
 
                 // atribui "$user_id" ao parametro
-                $stmt->bind_param('i',$user_id);
+                $stmt->bind_param('i', $user_id);
                 $stmt->execute();
                 $stmt->store_result();
 
                 if($stmt->num_rows == 1) {
 
+                    $stmt->bind_result($password);
                     // Caso o usuário já exista, pega variáveis a partir do resultado de $stmt->bind_result($password);
                     $stmt->fetch();
                     $login_check = hash('sha512',$password . $user_browser);
@@ -190,7 +191,7 @@
 
     function esc_url($url) {
 
-        if(''== $url) {
+        if('' == $url) {
             return $url;
         }
 
@@ -201,8 +202,8 @@
 
         $count = 1;
  
-        while($count) {
-            $url = str_replace($strip,'',$url,$count);
+        while ($count) {
+            $url = str_replace($strip,'', $url, $count);
         }
 
         $url = str_replace(';//', '://', $url);
@@ -216,7 +217,7 @@
         if($url[0] !== '/') {
 
             // Só estamos interessados em links provenientes de $_SERVER['PHP_SELF']
-            return'';
+            return '';
         } else {
             return $url;
         }
