@@ -43,8 +43,9 @@
 
         if(empty($error_msg)) {
 
+            $random_salt = hash('sha512', uniqid(openssl_random_pseudo_bytes(16), TRUE));
             // salt aleatório
-            $password = hash('sha512',uniqid(openssl_random_pseudo_bytes(16),TRUE));
+            $password = hash('sha512', $password . $random_salt);
 
             // inserindo um novo usuario no banco de dados
             if($insert_stmt = $mysqli->prepare("INSERT INTO members (username, email, password, salt) VALUES (?, ?, ?, ?)")) {

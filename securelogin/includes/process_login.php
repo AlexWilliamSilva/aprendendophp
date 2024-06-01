@@ -23,3 +23,4 @@
         // As variaveis POST que estão corretas não forma enviadas para esta pagina
         echo 'Invalid Request';
     }
+?>

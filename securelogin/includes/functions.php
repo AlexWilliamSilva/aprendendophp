@@ -39,7 +39,7 @@
 
         // definições pré-estabelecidas impedem a injeção de um ataque SQL
 
-        if($stmt=$mysqli->prepare("SELECT id, username, password, salt FROM members WHERE email=? LIMIT 1")) {
+        if($stmt = $mysqli->prepare("SELECT id, username, password, salt FROM members WHERE email = ? LIMIT 1")) {
 
             $stmt->bind_param('s',$email); // Relaciona email ao parâmetro
 
@@ -53,7 +53,7 @@
             $stmt->fetch();
 
             // faz o hash da senha com um salt
-            $password = hash('sha512',$password.$salt);
+            $password = hash('sha512', $password . $salt);
 
             if($stmt->num_rows == 1) {
                 // verifica se o usuario existe e verifica se a conta está bloqueada devido as tentativas de login
@@ -80,7 +80,7 @@
                         $username = preg_replace("/[^a-zA-Z0-9_\-]+/","",$username);
 
                         $_SESSION['username'] = $username;
-                        $_SESSION['login_string'] = hash('sha512',$password.$user_browser);
+                        $_SESSION['login_string'] = hash('sha512',$password . $user_browser);
                         // login concluido
 
                         return true;
@@ -89,7 +89,11 @@
 
                         // esta tentativa é registrada no banco de dados
                         $now = time();
-                        $mysqli->query("INSERT INTO login_attemps(user_id, time) VALUES ('$user_id','$now')");
+                        if(!$mysqli->query("INSERT INTO login_attemps(user_id, time) VALUES ('$user_id','$now')")) {
+
+                            header("Location: ../error.php?err=Database error: login_attempts");
+                            exit();
+                        }
 
                         return false;
 
@@ -99,8 +103,12 @@
                 // usuario não existe
 
                 return false;
+                }
+            } else {
+
+                header("Location: ../error.php?err=Database error: cannot prepare statement");
+                exit();
             }
-        }
     }
 
     function checkrute($user_id,$mysqli) {
@@ -210,3 +218,4 @@
             return $url;
         }
     }
+?>
