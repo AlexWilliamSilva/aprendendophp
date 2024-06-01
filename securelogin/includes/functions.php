@@ -13,7 +13,7 @@
 
         // força a sessão a usar apenas cookies
 
-        if(ini_set('session.use_only_cookies',1)===FALSE) {
+        if(ini_set('session.use_only_cookies',1) === FALSE) {
             header("Location:../error.php?err=Could not initiate a safe session(ini_set)");
             exit;
         }
@@ -35,7 +35,7 @@
         session_regenerate_id(); // recupera a sessão e deleta a anterior
     }
 
-    function login($email,$password,$mysqli) {
+    function login($email, $password, $mysqli) {
 
         // definições pré-estabelecidas impedem a injeção de um ataque SQL
 
@@ -49,7 +49,7 @@
 
             // obtém as variaveis através do resultado
 
-            $stmt->bind_result($user_id,$username,$db_password,$salt);
+            $stmt->bind_result($user_id, $username, $db_password, $salt);
             $stmt->fetch();
 
             // faz o hash da senha com um salt
@@ -81,15 +81,15 @@
 
                         $_SESSION['username'] = $username;
                         $_SESSION['login_string'] = hash('sha512',$password . $user_browser);
-                        // login concluido
 
+                        // login concluido
                         return true;
                     } else {
                         // senha incorreta
 
                         // esta tentativa é registrada no banco de dados
                         $now = time();
-                        if(!$mysqli->query("INSERT INTO login_attemps(user_id, time) VALUES ('$user_id','$now')")) {
+                        if(!$mysqli->query("INSERT INTO login_attempts(user_id, time) VALUES ('$user_id','$now')")) {
 
                             header("Location: ../error.php?err=Database error: login_attempts");
                             exit();
@@ -111,7 +111,7 @@
             }
     }
 
-    function checkrute($user_id,$mysqli) {
+    function checkbrute($user_id, $mysqli) {
 
         // registra a hora atual
         $now = time();
@@ -119,7 +119,7 @@
         // tentativas de login são contadas no intervalo de 2 horas
         $valid_attempts = $now - (2*60*60);
 
-        if($stmt = $mysqli->prepare("SELECT time FROM login_attempts <code><pre> WHERE user_id = ? AND time>'$valid_attempts'")) {
+        if($stmt = $mysqli->prepare("SELECT time FROM login_attempts WHERE user_id = ? AND time>'$valid_attempts'")) { //  <code><pre> foi retirado por conta de um erro
             $stmt->bind_param('i',$user_id);
 
             // Excute as tarefas pré-estabelecidas
@@ -131,7 +131,10 @@
                 return true;
             } else {
                 return false;
-            }
+                }
+            } else {
+                header("Location: ../error.php?err=Database error: cannot prepare statement");
+                exit();
         }
     }
 
@@ -157,7 +160,7 @@
 
                     // Caso o usuário já exista, pega variáveis a partir do resultado de $stmt->bind_result($password);
                     $stmt->fetch();
-                    $login_check = hash('sha512',$password.$user_browser);
+                    $login_check = hash('sha512',$password . $user_browser);
 
                     if($login_check == $login_string) {
 
@@ -175,8 +178,8 @@
                 }
             } else {
 
-                 // Não foi logado
-                 return false;
+                 header("Location: ../error.php?err=Database error: cannot prepare statement");
+                 exit();
             }
         } else {
 
@@ -187,7 +190,7 @@
 
     function esc_url($url) {
 
-        if("== $url") {
+        if(''== $url) {
             return $url;
         }
 
@@ -218,4 +221,3 @@
             return $url;
         }
     }
-?>

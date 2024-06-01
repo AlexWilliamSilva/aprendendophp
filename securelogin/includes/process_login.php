@@ -9,7 +9,7 @@
         $email = $_POST['email'];
         $password = $_POST['p']; 
 
-        if(login($email,$password,$mysqli) == true) {
+        if(login($email, $password, $mysqli) == true) {
 
             // login feito com sucesso
             header('Location:../protected_page.php');
@@ -23,4 +23,3 @@
         // As variaveis POST que estão corretas não forma enviadas para esta pagina
         echo 'Invalid Request';
     }
-?>

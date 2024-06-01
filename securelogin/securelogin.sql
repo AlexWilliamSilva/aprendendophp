@@ -11,7 +11,7 @@ CREATE TABLE `secure_login`.`members`(
     `salt` CHAR(128) NOT NULL
 ) ENGINE =  InnoDB;
 
-CREATE TABLE `secure_login`.`long_attemps` (
+CREATE TABLE `secure_login`.`login_attempts` (
     `user_id` int(11) not null,
     `time` varchar(30) not null
 ) ENGINE = InnoDB;

@@ -19,6 +19,11 @@
             $error_msg .= '<p class="error">O endereço de email digitado não é válido</p>';
         }
 
+        $password = filter_input(INPUT_POST, 'p', FILTER_SANITIZE_STRING);
+            if(strlen($password) != 128) {
+                $error_msg .= '<p class="error">Invalid password configuration.</p>';
+            }
+
         $prep_stmt = "SELECT id FROM members WHERE email = ? LIMIT 1";
         $stmt = $mysqli->prepare($prep_stmt);
 
