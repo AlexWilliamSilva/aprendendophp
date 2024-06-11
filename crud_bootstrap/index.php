@@ -1,6 +1,5 @@
 <?php
-   
-
+   // author: Samuel
     require_once 'header.php';
 ?>
 

@@ -26,7 +26,7 @@
                 if($con->query($sql) === TRUE) {
                     echo "<div class='alert alert-sucess'>Successfully added new user</div>";
                 }else{
-                    echo "<div class='alert alert"
+                    echo "<div class='alert alert";
                 }
 
             }
@@ -34,7 +34,7 @@
     ?>
 
     <div class="row">
-        <div class="co-md-6 col-md-offset-3">
+        <div class="col-md-6 col-md-offset-3">
 
             <div class="box">
 

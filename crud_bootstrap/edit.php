@@ -6,8 +6,8 @@
 <div class="container">
     <?php
         if(isset($_POST['update'])) {
-            if(empty($_POST['firstname']) || empty($_POST['lastname']) || 
-            empty($_POST['address']) || empty($_POST['contact'])) {
+            if(empty($_POST['firstname']) || empty($_POST['lastname']) || empty($_POST['address']) || empty($_POST['contact'])) 
+            {
 
                 echo "Please fillout all required fields";
 
@@ -45,12 +45,12 @@
         $row = $result->fetch_assoc();
         ?>
 
-        <div class="row">]
+        <div class="row">
             <div class="col-md-6 col-md-offset-3">
                 <div class="box">
                     <h3><i class="glyphicon-plus"></i>&nbsp;MODIFY User</h3>
 
-                    <form action="" method="post">
+                    <form action="" method="POST">
                         <input type="hidden" value="<?php echo $row['user_id'];?>" name="userid">
 
                         <label for="firstname">Firstname</label>
