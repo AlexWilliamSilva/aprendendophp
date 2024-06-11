@@ -18,7 +18,7 @@
                 $contact = $_POST['contact'];
 
                 $sql = "UPDATE users SET firstname = '{$firstname}',lastname = '{$lastname}',address = '{$address}',contact = '{$contact}' 
-                WHERE user_id=".$_POST['userid'];
+                WHERE user_id=" .$_POST['userid'];
 
                 if($con->query($sql) === TRUE) {
 
@@ -32,12 +32,12 @@
             }
         }
 
-        $id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
+        $id = isset($_GET['id']) ? (int)$_GET['id'] :0;
 
         $sql = "SELECT * FROM users WHERE user_id={$id}";
         $result = $con->query($sql);
         
-        if($result->num_rows < 1) {
+        if($result->num_rows<1) {
             header('Location: index.php');
             exit;
         }
@@ -48,7 +48,7 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
                 <div class="box">
-                    <h3><i class="glyphicon-plus"></i>&nbsp;MODIFY User</h3>
+                    <h3><i class="glyphicon glyphicon-plus"></i>&nbsp;MODIFY User</h3>
 
                     <form action="" method="POST">
                         <input type="hidden" value="<?php echo $row['user_id'];?>" name="userid">
@@ -57,7 +57,7 @@
                         <input type="text" name="firstname" id="firstname" value="<?php echo $row['firstname'];?>" class="form-control">
 
                         <label for="lastname">Lastname</label>
-                        <input type="text" name="" id="lastname" value="<?php echo $row['lastname'];?>" class="form-control">
+                        <input type="text" name="lastname" id="lastname" value="<?php echo $row['lastname'];?>" class="form-control">
 
                         <label for="address">Address</label>
                         <textarea rows="4" name="address" id="address" class="form-control"><?php echo $row['address'];?></textarea><br>
