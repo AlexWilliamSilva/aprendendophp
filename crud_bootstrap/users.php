@@ -1,12 +1,12 @@
 <?php
-    require_once 'connect.php';
+    require_once 'connect.php'; // linkando com as info do connect
     require_once 'header.php';
 
-    echo "<div class='container'>";
+    echo "<div class='container'>"; // chama as info da classe container
 
-    if(isset($_POST['delete'])) {
+    if(isset($_POST['delete'])) { // condição criada para se o post for delete, apagar as info de um user
         $sql = "DELETE FROM users WHERE user_id=".$_POST['userid'];
-        if($con->query($sql) === TRUE) {
+        if($con->query($sql) === TRUE) { // condição criada para chamar um alerta de sucesso cason 
             echo "<div class='alert alert-success'>Successfully delete user</div>";
 
         }
