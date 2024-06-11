@@ -5,20 +5,20 @@
 <head>
     
     <title>CRUD</title>
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> <!-- linkando o bootstrap -->
     <style type="text/css">
         .box{
-            background: #f0f0f0; padding: 20px;}
+            background: #f0f0f0; padding: 20px;} /* utilizando o css para mudar a cor e o espaçamento que a "caixa" irá tomar*/ 
     </style> </head>
 
 <body>
-    <div class="container">
+    <div class="container"> <!-- chama uma função chamada container que ja coloca info de maneira automatica de outro arquivo -->
 
-        <nav calss="navbar navbar-default">
+        <nav class="navbar navbar-default"> <!-- cria uma classe para o nav que também representa a div -->
 
-            <div class="container-fluid">
+            <div class="container-fluid"> <!-- cria uma classe que representa a div -->
 
-                <div class="navbar-header">
+                <div class="navbar-header"> <!-- cria uma classe que representa a div -->
 
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                         <span class="sr-only">Toggle navigation</span>

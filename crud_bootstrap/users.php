@@ -12,14 +12,14 @@
         }
     }
 
-    $sql = "SELECT * FROM users";
-    $result = $con->query($sql);
-    if($result->num_rows > 0) 
+    $sql = "SELECT * FROM users"; // armazena um código select do sql em uma variavel
+    $result = $con->query($sql); // armazena uma consulta em uma variavel
+    if($result->num_rows > 0)  // condição que verifica se o numero de linhas é maior que 0
     {
 
         ?>
         <h2>List of all Users</h2>
-        <table class="table table-bordered table-striped">
+        <table class="table table-bordered table-striped"> <!-- cria uma classe que alinha todos os termos abaixo nela -->
             <tr>
                 <td>Firstname</td>
                 <td>Lastname</td>
@@ -29,7 +29,7 @@
                 <td width="70px">EDIT</td>
             </tr>
     <?php
-        while($row = $result->fetch_assoc()) {
+        while($row = $result->fetch_assoc()) {  
             echo "<form action='' method='POST'>";
             echo "<input type='hidden' value='".$row['user_id']."' name='userid' />";
 
@@ -39,8 +39,8 @@
             echo "<td>".$row['address']."</td>";
             echo "<td>".$row['contact']."</td>";
 
-            echo "<td><input type='submit' name='delete' value='Delete' class='btn btn-danger'/></td>";
-            echo "<td><a href='edit.php?id=".$row['user_id']."' class='btn btn-info'>Edit</a></td>";
+            echo "<td><input type='submit' name='delete' value='Delete' class='btn btn-danger'/></td>"; // cria um input que serve como o botão de delete
+            echo "<td><a href='edit.php?id=".$row['user_id']."' class='btn btn-info'>Edit</a></td>"; // cria um botão que serve como um botão de editar
 
             echo "</tr>";
             echo "</form>";
