@@ -30,8 +30,37 @@
             </tr>
     <?php
         while($row = $result->fetch_assoc()) {
-            echo "<form action=" method='POST'>"; 
-            echo "input type='hidden' value="'.$row['user_id'].'" name='userid' />";
+            echo "<form action=" method='POST'>";
+            echo "<input type='hidden' value="", $row['user_id']."' name='userid' />";
 
             echo "<tr>";
+            echo "<td>".$row['firstname']."</td>";
+            echo "<td>".$row['lastname']."</td>";
+            echo "<td>".$row['address']."</td>";
+            echo "<td>".$row['contact']."</td>";
+
+            echo "<td><input type='submit' name='delete' value='Delete' class='btn btn-danger'/></td>";
+            echo "<td><a href='edit.php?id=".$row['user_id']."' class='btn btn-info'>Edit</a></td>";
+
+            echo "</tr>";
+            echo "</form>";
         }
+        
+        ?>
+
+        </table>
+
+    <?php
+
+    }
+    else
+    {
+        echo "<br><br>No Record Found";
+    }
+
+    ?>
+
+    </div>
+
+    <?php
+        require_once 'footer.php';
