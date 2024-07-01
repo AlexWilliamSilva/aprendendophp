@@ -25,8 +25,16 @@
             $this->Endereco = $Endereco;
         }
 
+        public function get_Endereco() {
+            return $this->Endereco;
+        }
+
         public function set_Cidade($Cidade) {
             $this->Cidade = $Cidade;
+        }
+
+        public function get_Cidade() {
+            return $this->Cidade;
         }
 
         public function set_CEP($CEP) {

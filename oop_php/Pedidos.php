@@ -29,6 +29,8 @@
             $this->PaisdeDestino = $PaisdeDestino;
         }
 
-        public function set_
+        public function set_($) {
+            $this-> = $;
+        }
     }
 ?>
