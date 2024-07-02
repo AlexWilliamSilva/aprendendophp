@@ -18,12 +18,24 @@
         }
 
         
+        public function get_NomeDaCategoria() {
+            return $this->NomeDaCategoria;
+        }
+        
         public function set_Descricao($Descricao) {
             $this->Descricao = $Descricao;
         }
 
+        public function get_Descricao() {
+            return $this->Descricao;
+        }
+
         public function set_Figura($Figura) {
             $this->Figura = $Figura;
+        }
+
+        public function get_Figura() {
+            return $this->Figura;
         }
     }
 ?>
