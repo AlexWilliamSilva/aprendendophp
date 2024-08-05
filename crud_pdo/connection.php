@@ -1,7 +1,7 @@
 <?php
 
     try{
-        $conexao = new PDO("mysql:host=localhost; dbname=crudsimples", "root", "123456");
+        $conexao = new PDO("mysql:host=localhost;dbname=crudsimples", "root", "");
         $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $conexao->exec("set names utf8");
 
