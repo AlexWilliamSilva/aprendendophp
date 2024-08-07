@@ -22,6 +22,7 @@ class CalculosTest extends TestCase
         $this->assertTrue($calc->isNull(''));
     }
 
+    
     public function test_CalcArray()
     {
         $calc = new Calculos;
